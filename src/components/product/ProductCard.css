@@ -1,0 +1,44 @@
+.product-card {
+    width: 100%;
+    max-width: 350px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 15px;
+  }
+  
+  .product-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #e60023;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 10px;
+  }
+  
+  .details {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+  }
+  

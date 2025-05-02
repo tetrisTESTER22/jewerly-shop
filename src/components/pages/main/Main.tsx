@@ -1,12 +1,16 @@
 import './Main.css';
+import { products } from '../../product/products';
+import ProductCard from '../../product/ProductCard';
 
 function Main() {
   return (
-    <div className="Main">
-      <header className="App-main-page">
-          #ewrwr
-      </header>
-    </div>
+    <main className="main">
+      <div className="product-grid">
+        {products.slice(0, 8).map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </main>
   );
 }
 
