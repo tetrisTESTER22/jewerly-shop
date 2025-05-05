@@ -152,6 +152,33 @@
   padding: 20px 0;
 }
 
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.checkout-button {
+  padding: 10px 20px;
+  background-color: #d4af37;
+  margin-right: 40px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-button:hover {
+  background-color: #c29e2e;
+}
+
+
 .cart-overlay {
   position: fixed;
   inset: 0;

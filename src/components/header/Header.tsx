@@ -15,7 +15,11 @@ function Header() {
       <div className="header-container">
         <div className="logo">JewelrySale</div>
         <nav className="nav-links">
-          <a href="#products">Products</a>
+          <a
+          href='/#products'
+          >
+          Products
+          </a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>

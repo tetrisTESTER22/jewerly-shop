@@ -60,6 +60,9 @@ function CartPopup({ onClose }: CartPopupProps) {
               </div>
             ))}
             <div className="cart-total">
+            <button className="checkout-button" onClick={() => window.location.href = '/checkout'}>
+              Перейти к оплате
+              </button>
               <strong>Итого:</strong> {totalPrice.toLocaleString()} ₽
             </div>
           </div>
