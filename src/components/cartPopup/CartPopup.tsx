@@ -11,8 +11,7 @@ function CartPopup({ onClose }: CartPopupProps) {
   const { cart, totalPrice, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // Закрытие при клике вне блока
-  useEffect(() => {
+    useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
         onClose();

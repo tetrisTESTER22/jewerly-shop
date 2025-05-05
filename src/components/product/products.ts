@@ -8,8 +8,9 @@ export const products = [
       price: 13500,
       oldPrice: 149990,
       weight: "2.4 г",
-      size: "16.5",
+      size: "",
       assay: "585",
+      availableSizes: ['15', '16', '16.5', '17', '18'],
     },
     {
       id: 2,

@@ -9,5 +9,6 @@ export interface Product {
     weight?: string;
     size?: string;
     assay?: string;
+    availableSizes?: string[];
   }
   
