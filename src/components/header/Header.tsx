@@ -1,6 +1,6 @@
 import './Header.css';
 import corzinaIcon from '../images/corzina.png';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../context/CartContext';
 import { useState } from 'react';
 import CartPopup from '../cartPopup/CartPopup';
 

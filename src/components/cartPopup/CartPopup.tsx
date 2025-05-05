@@ -1,47 +1,67 @@
 import './CartPopup.css';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../context/CartContext';
+import musorIcon from '../images/musor.png';
+import { useRef, useEffect } from 'react';
 
 interface CartPopupProps {
   onClose: () => void;
 }
 
 function CartPopup({ onClose }: CartPopupProps) {
-  const { cart } = useCart();
+  const { cart, totalPrice, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
+  const popupRef = useRef<HTMLDivElement>(null);
 
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  // Закрытие при клике вне блока
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose]);
 
   return (
-    <div className="cart-popup">
-      <div className="cart-popup-header">
-        <h3>Корзина</h3>
-        <button className="cart-popup-close" onClick={onClose}>
-          &times;
-        </button>
-      </div>
-
-      {cart.length === 0 ? (
-        <p className="empty-message">Корзина пуста</p>
-      ) : (
-        <div className="cart-items">
-          {cart.map(item => (
-            <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <p className="cart-item-name">{item.name}</p>
-                <p>Количество: {item.quantity}</p>
-                <p>Цена: {item.price.toLocaleString()} ₽</p>
-              </div>
-            </div>
-          ))}
-
-          <div className="cart-total">
-            <strong>Итого:</strong> {totalPrice.toLocaleString()} ₽
-          </div>
+    <div className="cart-overlay">
+      <div className="cart-popup" ref={popupRef}>
+        <div className="cart-popup-header">
+          <h3>Корзина</h3>
+          <button className="close-button" onClick={onClose}>×</button>
         </div>
-      )}
+
+        {cart.length === 0 ? (
+          <p className="empty-message">Корзина пуста</p>
+        ) : (
+          <div className="cart-items">
+            {cart.map(item => (
+              <div key={item.id} className="cart-item">
+                <img src={item.image} alt={item.name} className="cart-item-image" />
+                <div className="cart-item-details">
+                  <p className="item-name">{item.name}</p>
+                  <p className="item-price">{item.price.toLocaleString()} ₽</p>
+                  <div className="cart-item-bottom">
+                    <div className="quantity-controls">
+                      <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => increaseQuantity(item.id)}>+</button>
+                    </div>
+                    <img
+                      src={musorIcon}
+                      alt="Удалить"
+                      className="remove-icon"
+                      onClick={() => removeFromCart(item.id)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="cart-total">
+              <strong>Итого:</strong> {totalPrice.toLocaleString()} ₽
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

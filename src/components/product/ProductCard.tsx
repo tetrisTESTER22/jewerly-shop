@@ -1,5 +1,5 @@
 import './ProductCard.css';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../context/CartContext';
 import { Product } from '../../types/Product';
 
 function ProductCard({ product }: { product: Product }) {

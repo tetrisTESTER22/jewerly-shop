@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { CartProvider } from './context/CartContext';
+import { CartProvider } from './components/context/CartContext';
 import reportWebVitals from './reportWebVitals';
 import Hedaer from './components/header/Header';
 import Footer from './components/footer/Footer';
