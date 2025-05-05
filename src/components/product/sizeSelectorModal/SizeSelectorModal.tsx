@@ -1,6 +1,6 @@
 import './SizeSelectorModal.css';
 import { useState } from 'react';
-import { Product } from '../../types/Product';
+import { Product } from '../../../types/Product';
 
 interface SizeSelectorModalProps {
   product: Product;

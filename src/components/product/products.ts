@@ -1,4 +1,7 @@
-import firstRing from '../images/firstRing.jpg';
+import firstRing from '../images/product-images/firstRing.jpg';
+import bracletDiamonds from '../images/product-images/braclet-diamonds-1.jpg';
+import cepj1 from '../images/product-images/cepj-1.jpg';
+import goldBraclet from '../images/product-images/gold-braclet-1.jpg';
 
 export const products = [
     {
@@ -14,33 +17,36 @@ export const products = [
     },
     {
       id: 2,
-      name: "Цепочка плетёная",
-      image: "/images/chain1.jpg",
-      price: 620,
-      oldPrice: 2100,
+      name: "Браслет с бриллиантами",
+      image: bracletDiamonds,
+      price: 18999,
+      oldPrice: 44999,
       weight: "5.2 г",
       size: "45 см",
       assay: "585",
+      availableSizes: ['17', '18', '19', '20', '21'],
     },
     {
         id: 3,
-        name: "Золотое кольцо с фианитом",
-        image: "/images/ring1.jpg",
-        price: 350,
-        oldPrice: 1290,
+        name: "Цепь из белого золота",
+        image: cepj1,
+        price: 9999,
+        oldPrice: 39999,
         weight: "2.4 г",
         size: "16.5",
         assay: "585",
+        availableSizes: ['35', '40', '45', '50'],
       },
       {
         id: 4,
-        name: "Цепочка плетёная",
-        image: "/images/chain1.jpg",
-        price: 620,
-        oldPrice: 2100,
+        name: "Браслет из желтого золота",
+        image: goldBraclet,
+        price: 11999,
+        oldPrice: 72999,
         weight: "5.2 г",
         size: "45 см",
         assay: "585",
+        availableSizes: ['17', '18', '19', '20', '21'],
       },
       {
         id: 5,

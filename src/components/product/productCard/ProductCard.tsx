@@ -1,8 +1,8 @@
 import './ProductCard.css';
-import { useCart } from '../context/CartContext';
-import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
+import { Product } from '../../../types/Product';
 import { useState } from 'react';
-import SizeSelectorModal from './SizeSelectorModal';
+import SizeSelectorModal from '../sizeSelectorModal/SizeSelectorModal';
 
 function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();

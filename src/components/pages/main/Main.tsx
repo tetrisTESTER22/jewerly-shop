@@ -1,7 +1,7 @@
 import './Main.css';
 import { useState } from 'react';
 import { products } from '../../product/products';
-import ProductCard from '../../product/ProductCard';
+import ProductCard from '../../product/productCard/ProductCard';
 
 function Main() {
   const [currentPage, setCurrentPage] = useState(1);
