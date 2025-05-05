@@ -11,7 +11,7 @@ function CartPopup({ onClose }: CartPopupProps) {
   const { cart, totalPrice, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
   const popupRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
         onClose();
@@ -34,22 +34,26 @@ function CartPopup({ onClose }: CartPopupProps) {
         ) : (
           <div className="cart-items">
             {cart.map(item => (
-              <div key={item.id} className="cart-item">
+              <div key={`${item.id}-${item.selectedSize || ''}`} className="cart-item">
                 <img src={item.image} alt={item.name} className="cart-item-image" />
                 <div className="cart-item-details">
                   <p className="item-name">{item.name}</p>
+                  {item.selectedSize && (
+                    <p className="item-size">Размер: {item.selectedSize}</p>
+                    
+                  )}
                   <p className="item-price">{item.price.toLocaleString()} ₽</p>
                   <div className="cart-item-bottom">
                     <div className="quantity-controls">
-                      <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                      <button onClick={() => decreaseQuantity(item.id, item.selectedSize)}>-</button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => increaseQuantity(item.id)}>+</button>
+                      <button onClick={() => increaseQuantity(item.id, item.selectedSize)}>+</button>
                     </div>
                     <img
                       src={musorIcon}
                       alt="Удалить"
                       className="remove-icon"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.id, item.selectedSize)}
                     />
                   </div>
                 </div>

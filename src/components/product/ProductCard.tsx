@@ -9,8 +9,8 @@ function ProductCard({ product }: { product: Product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAddToCart = (selectedSize: string) => {
-    // передаём выбранный размер в товар перед добавлением
-    addToCart({ ...product, size: selectedSize });
+    addToCart(product, selectedSize); 
+    setIsModalOpen(false);
   };
 
   return (
