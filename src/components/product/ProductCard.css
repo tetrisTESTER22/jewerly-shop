@@ -1,44 +1,75 @@
 .product-card {
-    width: 100%;
-    max-width: 350px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .product-info {
-    padding: 15px;
-  }
-  
-  .product-info h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    font-weight: bold;
-    color: #e60023;
-  }
-  
-  .old-price {
-    text-decoration: line-through;
-    color: #999;
-    margin-left: 10px;
-  }
-  
-  .details {
-    font-size: 13px;
-    color: #555;
-    margin-top: 8px;
-  }
-  
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.product-info {
+  font-family: 'Arial', sans-serif;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount {
+  color: #555;
+}
+
+.current-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.product-name {
+  font-size: 15px;
+  color: #222;
+}
+
+.add-to-cart-button {
+  margin-top: 12px;
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #b4932f;
+}
+
+.product-details {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+

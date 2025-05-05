@@ -1,33 +1,37 @@
 import './ProductCard.css';
+import { useCart } from '../../context/CartContext';
+import { Product } from '../../types/Product';
 
-type Product = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  oldPrice: number;
-  weight: string;
-  size: string;
-  assay: string;
-};
+function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCart();
 
-interface Props {
-  product: Product;
-}
-
-function ProductCard({ product }: Props) {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} />
+      <img src={product.image} alt={product.name} className="product-image" />
+      
       <div className="product-info">
-        <h3>{product.name}</h3>
-        <p className="price">
-          ${product.price}
-          <span className="old-price">${product.oldPrice}</span>
-        </p>
-        <p className="details">
-          Вес: {product.weight} | Размер: {product.size} | Проба: {product.assay}
-        </p>
+        <div className="product-price">
+          {product.oldPrice && (
+            <span className="old-price">{product.oldPrice.toLocaleString()} ₽</span>
+          )}
+          {product.discount && <span className="discount">{product.discount}</span>}
+        </div>
+        
+        <div className="current-price">{product.price.toLocaleString()} ₽</div>
+        <div className="product-name">{product.name}</div>
+
+        {/* Дополнительные параметры */}
+        {(product.weight || product.size || product.assay) && (
+          <div className="product-details">
+            {product.weight && `Вес: ${product.weight} `}
+            {product.size && `| Размер: ${product.size} `}
+            {product.assay && `| Проба: ${product.assay}`}
+          </div>
+        )}
+
+        <button className="add-to-cart-button" onClick={() => addToCart(product)}>
+          В корзину
+        </button>
       </div>
     </div>
   );

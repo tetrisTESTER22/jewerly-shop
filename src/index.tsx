@@ -1,20 +1,17 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { CartProvider } from './context/CartContext';
 import reportWebVitals from './reportWebVitals';
 import Hedaer from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Main from './components/pages/main/Main';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
-  <React.StrictMode>
+  <CartProvider>
     <Hedaer />
     <Main />
     <Footer />
-  </React.StrictMode>
+  </CartProvider>
 );
 
 reportWebVitals();
