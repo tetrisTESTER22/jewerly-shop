@@ -20,12 +20,11 @@ function ProductCard({ product }: { product: Product }) {
         <div className="current-price">{product.price.toLocaleString()} ₽</div>
         <div className="product-name">{product.name}</div>
 
-        {/* Дополнительные параметры */}
         {(product.weight || product.size || product.assay) && (
           <div className="product-details">
-            {product.weight && `Вес: ${product.weight} `}
-            {product.size && `| Размер: ${product.size} `}
-            {product.assay && `| Проба: ${product.assay}`}
+          {/*  {product.weight && `Вес: ${product.weight} `} */
+          /*  {product.size && `| Размер: ${product.size} `} */
+          /*  {product.assay && `| Проба: ${product.assay}`} */}
           </div>
         )}
 
