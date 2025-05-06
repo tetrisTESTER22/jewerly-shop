@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './components/context/CartContext';
 import reportWebVitals from './reportWebVitals';
-
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Main from './components/pages/main/Main';

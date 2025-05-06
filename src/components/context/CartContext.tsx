@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode, useMemo } from 'react';
+import { createContext, useState, useContext, ReactNode, useMemo, useEffect } from 'react';
 import { Product } from '../../types/Product';
 
 interface CartItem extends Product {
@@ -19,7 +19,14 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const stored = localStorage.getItem('cart');
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Product, selectedSize?: string) => {
     setCart(prev => {
@@ -54,11 +61,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const decreaseQuantity = (id: number, selectedSize?: string) => {
     setCart(prev =>
-      prev.flatMap(item =>
-        item.id === id && item.selectedSize === selectedSize
-          ? item.quantity === 1 ? [] : [{ ...item, quantity: item.quantity - 1 }]
-          : [item]
-      )
+      prev.flatMap(item => {
+        if (item.id === id && item.selectedSize === selectedSize) {
+          if (item.quantity === 1) return [];
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      })
     );
   };
 
@@ -74,7 +83,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, totalItems, totalPrice }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+        totalItems,
+        totalPrice
+      }}
     >
       {children}
     </CartContext.Provider>
@@ -83,8 +100,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
+  if (!context) throw new Error("useCart must be used within a CartProvider");
   return context;
 };
