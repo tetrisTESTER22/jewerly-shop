@@ -18,10 +18,10 @@ function Header() {
           <a
           href='/#products'
           >
-          Products
+          Товары
           </a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#about">О нас</a>
+          <a href="#contact">Контакты</a>
         </nav>
         <div className="cart-icon-wrapper" onClick={() => setIsPopupOpen(!isPopupOpen)}>
           <img src={corzinaIcon} alt="Cart" className="cart-icon" />

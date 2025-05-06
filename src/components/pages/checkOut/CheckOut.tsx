@@ -24,7 +24,6 @@ function CheckoutPage() {
     number: '',
     street: '',
     apartment: '',
-    comment: '', 
   });
   const [paymentMethod, setPaymentMethod] = useState('Оплата при получении');
 
@@ -41,7 +40,7 @@ function CheckoutPage() {
               <img src={item.image} alt={item.name} className="checkout-item-image" />
               <div className="checkout-item-info">
                 <p className="checkout-item-name">{item.name}</p>
-                {item.selectedSize && <p className="checkout-item-size">{item.selectedSize}</p>}
+                {item.selectedSize && <p className="checkout-item-size">Размер: {item.selectedSize}</p>}
                 <p className="checkout-item-price">{item.price.toLocaleString()} ₽</p>
                 <div className="checkout-quantity-controls">
                   <button onClick={() => decreaseQuantity(item.id, item.selectedSize)}>-</button>
@@ -79,7 +78,7 @@ function CheckoutPage() {
             onChange={e => setAddress({ ...address, street: e.target.value })}
           />
           <input
-            placeholder="Квартира, этаж, подъезд, номер телефона"
+            placeholder="Квартира, этаж, подъезд"
             value={address.apartment}
             onChange={e => setAddress({ ...address, apartment: e.target.value })}
           />
@@ -105,7 +104,7 @@ function CheckoutPage() {
           </div>
           <button className="checkout-submit" onClick={handleOrderSubmit}>Оформить заказ</button>
           <p className="checkout-disclaimer">
-            Нажимая «Оформить заказ», вы соглашаетесь на обработку и передачу своих персональных данных и принимаете условия <a href="#">Публичной оферты</a>.
+            Нажимая «Оформить заказ», вы соглашаетесь на обработку и передачу своих персональных данных и принимаете условия Публичной оферты.
           </p>
         </div>
       </div>
